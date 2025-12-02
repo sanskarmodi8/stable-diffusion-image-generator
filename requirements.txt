@@ -1,0 +1,40 @@
+# CORE GPU LIBRARIES (PyTorch - GPU ONLY)
+# IMPORTANT: Install manually using:
+# pip install torch torchvision torchaudio --index-url https://download.pytorch.org/whl/cu121
+
+torch==2.5.1
+torchvision==0.20.1
+torchaudio==2.5.1
+
+
+# HUGGINGFACE DIFFUSION ECOSYSTEM
+diffusers==0.26.3
+transformers==4.39.3
+accelerate==0.28.0
+safetensors==0.4.2
+
+
+# UI FRAMEWORK
+gradio==4.29.0
+
+
+# IMAGE PROCESSING & UTILITIES
+opencv-python==4.9.0.80
+Pillow==10.2.0
+numpy==1.26.4
+loguru==0.7.2
+tqdm==4.66.2
+python-dotenv==1.0.1
+
+
+# UPSCALING / SUPER-RESOLUTION
+realesrgan==0.3.0
+basicsr==1.4.2
+facexlib==0.3.0
+gfpgan==1.3.8
+
+
+# DEV TOOLS
+black==24.3.0
+ruff==0.3.5
+pre-commit==3.7.0
