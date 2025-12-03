@@ -8,6 +8,7 @@ torchaudio==2.5.1
 
 
 # HUGGINGFACE DIFFUSION ECOSYSTEM
+huggingface_hub==0.20.3
 diffusers==0.26.3
 transformers==4.39.3
 accelerate==0.28.0
