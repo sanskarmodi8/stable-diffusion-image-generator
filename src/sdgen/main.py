@@ -9,11 +9,11 @@ from __future__ import annotations
 import torch
 from dotenv import load_dotenv
 
-from sdgen.config import AppSettings
-from sdgen.sd.img2img import prepare_img2img_pipeline
-from sdgen.sd.pipeline import load_pipeline, warmup_pipeline
-from sdgen.ui import build_ui
-from sdgen.utils.logger import get_logger
+from src.sdgen.config import AppSettings
+from src.sdgen.sd.img2img import prepare_img2img_pipeline
+from src.sdgen.sd.pipeline import load_pipeline, warmup_pipeline
+from src.sdgen.ui import build_ui
+from src.sdgen.utils.logger import get_logger
 
 logger = get_logger(__name__)
 load_dotenv()

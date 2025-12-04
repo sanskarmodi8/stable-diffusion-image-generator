@@ -7,13 +7,13 @@ from typing import Any, Dict, List, Optional, Tuple
 import gradio as gr
 from PIL import Image
 
-from sdgen.utils.common import short_prompt
-from sdgen.utils.history import (
+from src.sdgen.utils.common import short_prompt
+from src.sdgen.utils.history import (
     delete_history_entry,
     list_history,
     load_entry,
 )
-from sdgen.utils.logger import get_logger
+from src.sdgen.utils.logger import get_logger
 
 logger = get_logger(__name__)
 

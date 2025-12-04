@@ -6,20 +6,20 @@ from typing import Any, Dict, Tuple
 
 import gradio as gr
 
-from sdgen.sd.generator import generate_image
-from sdgen.sd.img2img import generate_img2img
-from sdgen.sd.models import Img2ImgConfig, Txt2ImgConfig
-from sdgen.ui.tabs import (
+from src.sdgen.sd.generator import generate_image
+from src.sdgen.sd.img2img import generate_img2img
+from src.sdgen.sd.models import Img2ImgConfig, Txt2ImgConfig
+from src.sdgen.ui.tabs import (
     build_history_tab,
     build_img2img_tab,
     build_presets_tab,
     build_txt2img_tab,
     build_upscaler_tab,
 )
-from sdgen.upscaler.upscaler import Upscaler
-from sdgen.utils.common import pretty_json, to_pil
-from sdgen.utils.history import save_history_entry
-from sdgen.utils.logger import get_logger
+from src.sdgen.upscaler.upscaler import Upscaler
+from src.sdgen.utils.common import pretty_json, to_pil
+from src.sdgen.utils.history import save_history_entry
+from src.sdgen.utils.logger import get_logger
 
 logger = get_logger(__name__)
 

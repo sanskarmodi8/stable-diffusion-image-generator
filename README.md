@@ -1,3 +1,9 @@
+---
+title: stable-diffusion-image-generator
+app_file: src/sdgen/main.py
+sdk: gradio
+sdk_version: 3.50.2
+---
 # 🎨 Stable Diffusion Image Generator
 
 AI system built using **Stable Diffusion (HuggingFace Diffusers)** and a modern **Gradio UI**.

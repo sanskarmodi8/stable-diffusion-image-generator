@@ -36,5 +36,3 @@ realesrgan-ncnn-py==2.0.0
 black==24.3.0
 ruff==0.3.5
 pre-commit==3.7.0
-
--e .

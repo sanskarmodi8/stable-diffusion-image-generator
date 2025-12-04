@@ -10,7 +10,7 @@ import logging
 from logging import Handler, Logger
 from logging.handlers import RotatingFileHandler
 
-from sdgen.config import LOGS_ROOT
+from src.sdgen.config import LOGS_ROOT
 
 # Ensure logs directory exists
 LOGS_ROOT.mkdir(parents=True, exist_ok=True)

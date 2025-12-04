@@ -1,7 +1,7 @@
 """Configuration exports for the sdgen package.
 
 This module re-exports commonly used configuration paths and settings
-so they can be imported directly from `sdgen.config`.
+so they can be imported directly from `src.sdgen.config`.
 """
 
 from __future__ import annotations

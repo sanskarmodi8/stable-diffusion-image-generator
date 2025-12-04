@@ -8,9 +8,9 @@ from typing import Tuple
 import torch
 from PIL import Image
 
-from sdgen.sd.models import GenerationMetadata, Txt2ImgConfig
-from sdgen.utils.common import validate_resolution
-from sdgen.utils.logger import get_logger
+from src.sdgen.sd.models import GenerationMetadata, Txt2ImgConfig
+from src.sdgen.utils.common import validate_resolution
+from src.sdgen.utils.logger import get_logger
 
 logger = get_logger(__name__)
 

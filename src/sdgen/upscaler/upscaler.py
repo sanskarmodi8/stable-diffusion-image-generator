@@ -14,8 +14,8 @@ from typing import Optional
 
 from PIL import Image
 
-from sdgen.upscaler.realesrgan import NCNNUpscaler
-from sdgen.utils.logger import get_logger
+from src.sdgen.upscaler.realesrgan import NCNNUpscaler
+from src.sdgen.utils.logger import get_logger
 
 logger = get_logger(__name__)
 

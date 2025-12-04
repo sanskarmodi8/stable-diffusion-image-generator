@@ -18,14 +18,14 @@ from typing import Any, Dict, List, Optional, Tuple
 
 from PIL import Image
 
-from sdgen.config import (
+from src.sdgen.config import (
     HISTORY_ENTRIES_DIR,
     HISTORY_FULL_DIR,
     HISTORY_ROOT,
     HISTORY_THUMBS_DIR,
 )
-from sdgen.sd.models import GenerationMetadata, HistorySummary
-from sdgen.utils.logger import get_logger
+from src.sdgen.sd.models import GenerationMetadata, HistorySummary
+from src.sdgen.utils.logger import get_logger
 
 logger = get_logger(__name__)
 

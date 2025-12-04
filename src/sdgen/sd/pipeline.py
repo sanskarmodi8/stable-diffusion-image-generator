@@ -12,7 +12,7 @@ from diffusers import (
     StableDiffusionPipeline,
 )
 
-from sdgen.utils.logger import get_logger
+from src.sdgen.utils.logger import get_logger
 
 logger = get_logger(__name__)
 

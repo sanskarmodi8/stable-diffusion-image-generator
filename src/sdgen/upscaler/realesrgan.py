@@ -12,7 +12,7 @@ from typing import Final
 from PIL import Image
 from realesrgan_ncnn_py import Realesrgan
 
-from sdgen.utils.logger import get_logger
+from src.sdgen.utils.logger import get_logger
 
 logger = get_logger(__name__)
 
