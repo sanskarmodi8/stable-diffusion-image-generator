@@ -7,7 +7,7 @@ from typing import Any, Dict, List, Optional, Tuple
 import gradio as gr
 from PIL import Image
 
-from sdgen.utils.common import pretty_json, short_prompt
+from sdgen.utils.common import short_prompt
 from sdgen.utils.history import (
     delete_history_entry,
     list_history,
@@ -64,8 +64,7 @@ def load_from_dropdown(selected_label: str, entries: List[Dict[str, Any]]):
     thumb_path = data.get("thumbnail")
     img = Image.open(thumb_path) if thumb_path else None
 
-    # pretty_json returns string → JSON component will parse it
-    return img, pretty_json(data)
+    return img, data
 
 
 def refresh_history():
@@ -79,7 +78,7 @@ def refresh_history():
     else:
         dd = gr.update(choices=[], value=None)
 
-    return dd, entries, None, ""
+    return dd, entries, None, {}
 
 
 def delete_entry(selected_label: str, entries: List[Dict[str, Any]]):
@@ -102,7 +101,7 @@ def delete_entry(selected_label: str, entries: List[Dict[str, Any]]):
     else:
         dd = gr.update(choices=[], value=None)
 
-    return None, "", dd, new_entries
+    return None, {}, dd, new_entries
 
 
 # UI

@@ -16,8 +16,6 @@ from sdgen.ui.tabs import (
     build_txt2img_tab,
     build_upscaler_tab,
 )
-from sdgen.ui.tabs.img2img_tab import Img2ImgControls
-from sdgen.ui.tabs.txt2img_tab import Txt2ImgControls
 from sdgen.upscaler.upscaler import Upscaler
 from sdgen.utils.common import pretty_json, to_pil
 from sdgen.utils.history import save_history_entry
@@ -42,8 +40,16 @@ def _resolve_seed(value: Any) -> int | None:
         return None
 
 
+def _update_steps(model):
+    """Upate steps based on the model."""
+    if model == "Turbo":
+        return gr.update(minimum=1, maximum=10, value=6, step=1)
+    return gr.update(minimum=10, maximum=30, value=20, step=1)
+
+
 def _txt2img_handler(
-    pipe: Any,
+    model_choice: str,
+    pipes: dict,
     prompt: str,
     negative: str,
     steps: int,
@@ -53,6 +59,9 @@ def _txt2img_handler(
     seed: Any,
 ) -> Tuple[Any, str]:
     """Run text-to-image generation."""
+    model = model_choice
+    pipe = pipes[model]
+
     cfg = Txt2ImgConfig(
         prompt=prompt or "",
         negative_prompt=negative or "",
@@ -75,7 +84,8 @@ def _txt2img_handler(
 
 
 def _img2img_handler(
-    pipe: Any,
+    model_choice: str,
+    pipes: dict,
     input_image: Any,
     prompt: str,
     negative: str,
@@ -85,6 +95,9 @@ def _img2img_handler(
     seed: Any,
 ) -> Tuple[Any, str]:
     """Run image-to-image generation."""
+    model = model_choice
+    pipe = pipes[model]
+
     if input_image is None:
         raise gr.Error("Upload an image to continue.")
 
@@ -146,7 +159,7 @@ def _upscale_handler(
     return out_image, pretty_json(meta)
 
 
-def build_ui(txt2img_pipe: Any, img2img_pipe: Any) -> gr.Blocks:
+def build_ui(txt2img_pipes: dict, img2img_pipes: dict) -> gr.Blocks:
     """Build the entire Gradio UI."""
     with gr.Blocks() as demo:
         gr.Markdown(
@@ -155,12 +168,29 @@ def build_ui(txt2img_pipe: Any, img2img_pipe: Any) -> gr.Blocks:
             Diffusion toolkit."
         )
 
-        txt_controls: Txt2ImgControls = build_txt2img_tab(
-            handler=lambda *args: _txt2img_handler(txt2img_pipe, *args),
+        model_choice = gr.Dropdown(
+            choices=[
+                "SD1.5",
+                "Turbo",
+            ],
+            value="SD1.5",
+            label="Model",
         )
 
-        img_controls: Img2ImgControls = build_img2img_tab(
-            handler=lambda *args: _img2img_handler(img2img_pipe, *args),
+        txt_controls = build_txt2img_tab(
+            handler=lambda model_name, *args: _txt2img_handler(
+                model_name,
+                txt2img_pipes,
+                *args,
+            ),
+        )
+
+        img_controls = build_img2img_tab(
+            handler=lambda model_name, *args: _img2img_handler(
+                model_name,
+                img2img_pipes,
+                *args,
+            ),
         )
 
         build_upscaler_tab(
@@ -174,11 +204,25 @@ def build_ui(txt2img_pipe: Any, img2img_pipe: Any) -> gr.Blocks:
 
         build_history_tab()
 
+        model_choice.change(
+            fn=_update_steps,
+            inputs=[model_choice],
+            outputs=[txt_controls.steps],
+        )
+        model_choice.change(
+            fn=_update_steps,
+            inputs=[model_choice],
+            outputs=[img_controls.steps],
+        )
+
         gr.Markdown(
             "### Notes\n"
-            "- Seeds left blank will be randomized.\n"
-            "- Use **History → Refresh History** if new thumbnails do not appear.\n"
-            "- Presets apply to both **Text → Image** and **Image → Image** tabs.\n"
+            "- Use **History → Refresh** if new entries do not appear.\n"
+            "- Presets apply to both **Text → Image** and \
+ **Image → Image** tabs.\n"
+            "- Inference speed will be much faster on GPU \
+(This app is hosted on CPU based HF Spaces).\n"
+            "- Use Turbo model if you prefer speed over performance."
         )
 
     return demo

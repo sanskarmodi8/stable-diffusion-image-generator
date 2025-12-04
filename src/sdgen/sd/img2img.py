@@ -110,7 +110,7 @@ def generate_img2img(
     with torch.autocast(device_type=autocast_device):
         out = pipe(
             prompt=cfg.prompt,
-            negative_prompt=cfg.neg_prompt or None,
+            negative_prompt=cfg.negative_prompt or None,
             image=init,
             strength=float(cfg.strength),
             num_inference_steps=int(cfg.steps),
@@ -124,7 +124,7 @@ def generate_img2img(
     meta = GenerationMetadata(
         mode="img2img",
         prompt=cfg.prompt,
-        negative_prompt=cfg.neg_prompt or "",
+        negative_prompt=cfg.negative_prompt or "",
         steps=int(cfg.steps),
         guidance_scale=float(cfg.guidance_scale),
         width=width,

@@ -47,13 +47,13 @@ def build_txt2img_tab(handler: Callable[..., Tuple]) -> Txt2ImgControls:
 
                 steps = gr.Slider(
                     minimum=10,
-                    maximum=50,
-                    value=30,
+                    maximum=30,
+                    value=20,
                     step=1,
                     label="Steps",
                 )
                 gr.Markdown(
-                    "More steps → finer detail, slower runtime. 20–40 is typical.",
+                    "More steps → finer detail, slower runtime.",
                 )
 
                 guidance = gr.Slider(
@@ -64,8 +64,8 @@ def build_txt2img_tab(handler: Callable[..., Tuple]) -> Txt2ImgControls:
                     label="Guidance Scale (CFG)",
                 )
                 gr.Markdown(
-                    "Higher values make generation match the prompt more strictly. "
-                    "7–9 is a common range.",
+                    "Higher values make generation match \
+the prompt more strictly. "
                 )
 
                 width = gr.Slider(

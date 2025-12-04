@@ -1,0 +1,15 @@
+{
+  "mode": "txt2img",
+  "prompt": "dramatic cinematic lighting, moody, film grain,                 Kodak Portra, filmic color grading",
+  "negative_prompt": "oversaturated, low detail, flat lighting",
+  "steps": 30,
+  "guidance_scale": 7.0,
+  "width": 768,
+  "height": 512,
+  "seed": 6882939413923257663,
+  "elapsed_seconds": 20.79175043106079,
+  "timestamp": "2025-12-04T13:29:35.384099",
+  "id": "e00c8028-63d1-40a7-8504-e1a447538fe1",
+  "thumbnail": "/home/sanskar-modi/current_working_personal_projects/stable-diffusion-image-generator/src/assets/history/thumbnails/e00c8028-63d1-40a7-8504-e1a447538fe1.png",
+  "full_image": "/home/sanskar-modi/current_working_personal_projects/stable-diffusion-image-generator/src/assets/history/full/e00c8028-63d1-40a7-8504-e1a447538fe1.png"
+}

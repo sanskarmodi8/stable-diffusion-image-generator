@@ -1,0 +1,15 @@
+{
+  "mode": "txt2img",
+  "prompt": "oil painting, impasto brush strokes, classical lighting, Rembrandt style",
+  "negative_prompt": "blurry, cartoonish, digital artifacts",
+  "steps": 40,
+  "guidance_scale": 8.5,
+  "width": 512,
+  "height": 768,
+  "seed": 7956870375603612926,
+  "elapsed_seconds": 202.7896490097046,
+  "timestamp": "2025-12-04T14:22:51.556788",
+  "id": "027d2413-fbd2-4a24-9ff7-98fc8d3e80c9",
+  "thumbnail": "/home/sanskar-modi/current_working_personal_projects/stable-diffusion-image-generator/src/assets/history/thumbnails/027d2413-fbd2-4a24-9ff7-98fc8d3e80c9.png",
+  "full_image": "/home/sanskar-modi/current_working_personal_projects/stable-diffusion-image-generator/src/assets/history/full/027d2413-fbd2-4a24-9ff7-98fc8d3e80c9.png"
+}

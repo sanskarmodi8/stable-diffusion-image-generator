@@ -36,25 +36,39 @@ def detect_device() -> str:
 def main() -> None:
     """Start the Stable Diffusion UI and initialize inference pipelines."""
     settings = AppSettings()
-    model_id = settings.model_id
+    model_id1 = settings.model_id1
+    model_id2 = settings.model_id2
 
     device = detect_device()
 
-    logger.info("Loading pipeline %s", model_id)
-    pipe = load_pipeline(
-        model_id=model_id,
-        device=device,
-        use_fp16=device == "cuda",
-        enable_xformers=settings.enable_xformers,
-    )
-
+    logger.info("Loading pipeline %s", model_id1)
+    pipes = {
+        "SD1.5": load_pipeline(
+            model_id=model_id1,
+            device=device,
+            use_fp16=device == "cuda",
+            enable_xformers=settings.enable_xformers,
+        ),
+        "Turbo": load_pipeline(
+            model_id=model_id2,
+            device=device,
+            use_fp16=device == "cuda",
+            enable_xformers=settings.enable_xformers,
+        ),
+    }
     if device == "cuda" and settings.warmup:
-        warmup_pipeline(pipe)
+        warmup_pipeline(pipes["SD1.5"])
 
-    img2img_pipe = prepare_img2img_pipeline(pipe)
+    img2img_pipes = {
+        "SD1.5": prepare_img2img_pipeline(pipes["SD1.5"]),
+        "Turbo": prepare_img2img_pipeline(pipes["Turbo"]),
+    }
 
-    demo = build_ui(pipe, img2img_pipe)
-    demo.launch(
+    demo = build_ui(pipes, img2img_pipes)
+    demo.queue(
+        concurrency_count=1,
+        max_size=8,
+    ).launch(
         server_name=settings.server_host,
         server_port=settings.server_port,
         share=settings.share,

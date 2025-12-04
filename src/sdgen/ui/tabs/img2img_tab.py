@@ -65,18 +65,24 @@ def build_img2img_tab(handler: Callable[..., Tuple[Any, dict]]) -> Img2ImgContro
 
                 steps = gr.Slider(
                     minimum=10,
-                    maximum=50,
-                    value=25,
+                    maximum=30,
+                    value=20,
                     step=1,
                     label="Steps",
                 )
-
+                gr.Markdown(
+                    "More steps → finer detail, slower runtime.",
+                )
                 guidance = gr.Slider(
                     minimum=1,
                     maximum=15,
                     value=7.0,
                     step=0.5,
                     label="Guidance Scale",
+                )
+                gr.Markdown(
+                    "Higher values make generation match \
+the prompt more strictly. "
                 )
 
                 seed = gr.Textbox(

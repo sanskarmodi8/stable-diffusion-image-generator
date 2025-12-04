@@ -34,17 +34,6 @@ def apply_preset(preset_name: Any) -> Tuple[Any, ...]:
     prompt = preset.get("prompt", "")
     negative = preset.get("negative_prompt", "")
 
-    steps = int(preset.get("steps", 30))
-    guidance = float(preset.get("guidance_scale", 7.5))
-    width = int(preset.get("width", 512))
-    height = int(preset.get("height", 512))
-
-    # For Img2Img:
-    img_steps = max(10, steps)
-    img_guidance = guidance
-    img_strength = 0.6  # neutral default
-    img_seed = ""
-
     # only return data; UI wiring chooses what to set
     status_msg = f"Applied preset: {preset_name}"
 
@@ -52,17 +41,9 @@ def apply_preset(preset_name: Any) -> Tuple[Any, ...]:
         # txt2img
         prompt,
         negative,
-        steps,
-        guidance,
-        width,
-        height,
         # img2img
         prompt,
         negative,
-        img_steps,
-        img_guidance,
-        img_strength,
-        img_seed,
         # status
         status_msg,
     )
@@ -102,17 +83,9 @@ def build_presets_tab(
                 # txt2img
                 txt_controls.prompt,
                 txt_controls.negative,
-                txt_controls.steps,
-                txt_controls.guidance,
-                txt_controls.width,
-                txt_controls.height,
                 # img2img
                 img_controls.prompt,
                 img_controls.negative,
-                img_controls.steps,
-                img_controls.guidance,
-                img_controls.strength,
-                img_controls.seed,
                 # status markdown
                 status_box,
             ],

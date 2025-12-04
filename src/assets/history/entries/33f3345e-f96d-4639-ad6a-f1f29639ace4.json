@@ -1,0 +1,15 @@
+{
+  "mode": "txt2img",
+  "prompt": "high quality anime, clean lines, vibrant colors,                 soft rim lighting, studio lighting",
+  "negative_prompt": "blurry, low detail, mutation, deformed",
+  "steps": 26,
+  "guidance_scale": 7.0,
+  "width": 448,
+  "height": 448,
+  "seed": 5403877172223779031,
+  "elapsed_seconds": 7.454399347305298,
+  "timestamp": "2025-12-04T13:27:43.827963",
+  "id": "33f3345e-f96d-4639-ad6a-f1f29639ace4",
+  "thumbnail": "/home/sanskar-modi/current_working_personal_projects/stable-diffusion-image-generator/src/assets/history/thumbnails/33f3345e-f96d-4639-ad6a-f1f29639ace4.png",
+  "full_image": "/home/sanskar-modi/current_working_personal_projects/stable-diffusion-image-generator/src/assets/history/full/33f3345e-f96d-4639-ad6a-f1f29639ace4.png"
+}

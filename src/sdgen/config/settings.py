@@ -23,7 +23,8 @@ class AppSettings:
     - SHARE: enable Gradio public sharing link
     """
 
-    model_id: str = os.getenv("MODEL_ID", "runwayml/stable-diffusion-v1-5")
+    model_id1: str = os.getenv("MODEL_ID1", "runwayml/stable-diffusion-v1-5")
+    model_id2: str = os.getenv("MODEL_ID2", "stabilityai/stable-diffusion-turbo")
     enable_xformers: bool = bool(int(os.getenv("XFORMERS", "0")))
     warmup: bool = bool(int(os.getenv("WARMUP", "1")))
     server_port: int = int(os.getenv("PORT", "7860"))

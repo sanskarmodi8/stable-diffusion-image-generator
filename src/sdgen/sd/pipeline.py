@@ -6,7 +6,11 @@ import os
 from typing import Optional
 
 import torch
-from diffusers import DPMSolverMultistepScheduler, StableDiffusionPipeline
+from diffusers import (
+    DPMSolverMultistepScheduler,
+    EulerAncestralDiscreteScheduler,
+    StableDiffusionPipeline,
+)
 
 from sdgen.utils.logger import get_logger
 
@@ -29,7 +33,7 @@ def load_pipeline(
     use_fp16: bool = True,
     enable_xformers: bool = False,
     torch_dtype: Optional[torch.dtype] = None,
-    scheduler: Optional[DPMSolverMultistepScheduler] = None,
+    scheduler: any = None,
 ) -> StableDiffusionPipeline:
     """Load the Stable Diffusion pipeline with optional scheduler and xFormers.
 
@@ -49,10 +53,16 @@ def load_pipeline(
 
     if scheduler is None:
         try:
-            scheduler = DPMSolverMultistepScheduler.from_pretrained(
-                model_id,
-                subfolder="scheduler",
-            )
+            if "turbo" in model_id.lower():
+                scheduler = EulerAncestralDiscreteScheduler.from_pretrained(
+                    model_id,
+                    subfolder="scheduler",
+                )
+            else:
+                scheduler = DPMSolverMultistepScheduler.from_pretrained(
+                    model_id,
+                    subfolder="scheduler",
+                )
         except Exception:
             scheduler = None
 
