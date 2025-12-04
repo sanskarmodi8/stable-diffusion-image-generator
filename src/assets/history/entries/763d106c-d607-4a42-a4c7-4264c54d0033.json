@@ -1,0 +1,15 @@
+{
+  "mode": "txt2img",
+  "prompt": "ultra realistic, 35mm photography, photorealistic, cinematic lighting",
+  "negative_prompt": "low quality, blurry, deformed, extra limbs",
+  "steps": 28,
+  "guidance_scale": 7.5,
+  "width": 512,
+  "height": 512,
+  "seed": 7647575900507438056,
+  "elapsed_seconds": 8.190003871917725,
+  "timestamp": "2025-12-04T07:58:10.667954",
+  "id": "763d106c-d607-4a42-a4c7-4264c54d0033",
+  "thumbnail": "/home/sanskar-modi/current_working_personal_projects/stable-diffusion-image-generator/src/assets/history/thumbnails/763d106c-d607-4a42-a4c7-4264c54d0033.png",
+  "full_image": "/home/sanskar-modi/current_working_personal_projects/stable-diffusion-image-generator/src/assets/history/full/763d106c-d607-4a42-a4c7-4264c54d0033.png"
+}

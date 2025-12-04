@@ -1,0 +1,52 @@
+[
+  {
+    "id": "a6861b54-0afb-4b32-bb33-cacdadd7e639",
+    "prompt": "dramatic cinematic lighting, moody, film grain, Kodak Portra, filmic color grading",
+    "mode": "txt2img",
+    "seed": 2005184672833822731,
+    "width": 768,
+    "height": 512,
+    "timestamp": "2025-12-04T10:26:46.533003",
+    "thumbnail": "/home/sanskar-modi/current_working_personal_projects/stable-diffusion-image-generator/src/assets/history/thumbnails/a6861b54-0afb-4b32-bb33-cacdadd7e639.png"
+  },
+  {
+    "id": "30517a2b-2b3f-468d-a22c-0365852e9fd4",
+    "prompt": "oil painting, impasto brush strokes, classical lighting, Rembrandt style",
+    "mode": "txt2img",
+    "seed": 7008176382479260353,
+    "width": 512,
+    "height": 768,
+    "timestamp": "2025-12-04T10:18:33.634636",
+    "thumbnail": "/home/sanskar-modi/current_working_personal_projects/stable-diffusion-image-generator/src/assets/history/thumbnails/30517a2b-2b3f-468d-a22c-0365852e9fd4.png"
+  },
+  {
+    "id": "dbc7d811-d607-4432-a10f-94245b06a629",
+    "prompt": "cyberpunk city, neon reflections, wet streets, high detail, synthwave",
+    "mode": "txt2img",
+    "seed": 1759688396546594556,
+    "width": 768,
+    "height": 768,
+    "timestamp": "2025-12-04T09:47:30.607670",
+    "thumbnail": "/home/sanskar-modi/current_working_personal_projects/stable-diffusion-image-generator/src/assets/history/thumbnails/dbc7d811-d607-4432-a10f-94245b06a629.png"
+  },
+  {
+    "id": "6c2372b4-ad89-4f9a-845d-729447fbfc42",
+    "prompt": "oil painting, impasto brush strokes, classical lighting, Rembrandt style",
+    "mode": "txt2img",
+    "seed": 8697126389267085321,
+    "width": 512,
+    "height": 768,
+    "timestamp": "2025-12-04T07:59:00.004141",
+    "thumbnail": "/home/sanskar-modi/current_working_personal_projects/stable-diffusion-image-generator/src/assets/history/thumbnails/6c2372b4-ad89-4f9a-845d-729447fbfc42.png"
+  },
+  {
+    "id": "763d106c-d607-4a42-a4c7-4264c54d0033",
+    "prompt": "ultra realistic, 35mm photography, photorealistic, cinematic lighting",
+    "mode": "txt2img",
+    "seed": 7647575900507438056,
+    "width": 512,
+    "height": 512,
+    "timestamp": "2025-12-04T07:58:10.667954",
+    "thumbnail": "/home/sanskar-modi/current_working_personal_projects/stable-diffusion-image-generator/src/assets/history/thumbnails/763d106c-d607-4a42-a4c7-4264c54d0033.png"
+  }
+]
