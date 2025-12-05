@@ -7,10 +7,14 @@ sdk_version: 6.0.2
 
 # Stable Diffusion Image Generator
 
+![appdemo](.github_assets/demo.png)
+
 A modular image generation system built on **HuggingFace Diffusers**, with support for multiple Stable Diffusion pipelines, configurable inference parameters, a clean **Gradio UI**, and a lightweight local **history/metadata store**.
 
 The system supports **text-to-image**, **image-to-image**, and **super-resolution upscaling** using **Real-ESRGAN (NCNN)**.
 Designed with a focus on **extensibility**, **clean code**, and **practical deployment constraints** (CPU or low-memory environments).
+
+[Visit App](https://huggingface.co/spaces/SanskarModi/sd-image-gen-toolkit)
 
 ---
 
