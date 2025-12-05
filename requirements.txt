@@ -16,7 +16,7 @@ safetensors==0.7.0
 
 
 # UI FRAMEWORK
-gradio==6.0.2
+gradio==5.4.0
 
 
 # IMAGE PROCESSING & UTILITIES
