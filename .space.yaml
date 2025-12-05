@@ -1,0 +1,3 @@
+build:
+  commands:
+    - pip install --no-cache-dir .
