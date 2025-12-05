@@ -1,4 +1,4 @@
-"""Application runtime settings for src.sdgen.
+"""Application runtime settings for sdgen.
 
 AppSettings reads configuration values from environment variables at
 process start and exposes them as strongly typed attributes.

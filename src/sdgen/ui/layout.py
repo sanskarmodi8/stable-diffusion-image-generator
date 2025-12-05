@@ -2,24 +2,24 @@
 
 from __future__ import annotations
 
-from typing import Any, Dict, Tuple
+from typing import Any, Tuple
 
 import gradio as gr
 
-from src.sdgen.sd.generator import generate_image
-from src.sdgen.sd.img2img import generate_img2img
-from src.sdgen.sd.models import Img2ImgConfig, Txt2ImgConfig
-from src.sdgen.ui.tabs import (
+from sdgen.sd.generator import generate_image
+from sdgen.sd.img2img import generate_img2img
+from sdgen.sd.models import Img2ImgConfig, Txt2ImgConfig
+from sdgen.ui.tabs import (
     build_history_tab,
     build_img2img_tab,
     build_presets_tab,
     build_txt2img_tab,
     build_upscaler_tab,
 )
-from src.sdgen.upscaler.upscaler import Upscaler
-from src.sdgen.utils.common import pretty_json, to_pil
-from src.sdgen.utils.history import save_history_entry
-from src.sdgen.utils.logger import get_logger
+from sdgen.upscaler.upscaler import Upscaler
+from sdgen.utils.common import pretty_json, to_pil
+from sdgen.utils.history import save_history_entry
+from sdgen.utils.logger import get_logger
 
 logger = get_logger(__name__)
 
@@ -142,21 +142,14 @@ def _upscale_handler(
         raise gr.Error("Scale must be numeric (2 or 4).") from exc
 
     upscaler = Upscaler(scale=scale_int, prefer="ncnn")
-    out_image = upscaler.upscale(pil_image)
-
-    meta: Dict[str, Any] = {
-        "mode": "upscale",
-        "scale": scale_int,
-        "width": out_image.width,
-        "height": out_image.height,
-    }
+    out_image, meta = upscaler.upscale(pil_image)
 
     try:
         save_history_entry(meta, out_image)
     except Exception as exc:  # noqa: BLE001
         logger.exception("Failed to save history entry: %s", exc)
 
-    return out_image, pretty_json(meta)
+    return out_image, pretty_json(meta.to_dict())
 
 
 def make_img2img_handler(model_choice, pipes):

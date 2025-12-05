@@ -10,12 +10,14 @@ Planned:
 
 from __future__ import annotations
 
+import time
 from typing import Optional
 
 from PIL import Image
 
-from src.sdgen.upscaler.realesrgan import NCNNUpscaler
-from src.sdgen.utils.logger import get_logger
+from sdgen.sd.models import GenerationMetadata
+from sdgen.upscaler.realesrgan import NCNNUpscaler
+from sdgen.utils.logger import get_logger
 
 logger = get_logger(__name__)
 
@@ -78,7 +80,7 @@ class Upscaler:
             logger.warning("NCNN RealESRGAN init failed: %s", err)
             self.engine = None
 
-    def upscale(self, image: Image.Image) -> Image.Image:
+    def upscale(self, image: Image.Image) -> tuple[Image.Image, GenerationMetadata]:
         """Upscale the given image.
 
         Args:
@@ -91,5 +93,23 @@ class Upscaler:
             RuntimeError: If the engine is not initialized.
         """
         if self.engine is None:
-            raise RuntimeError("Upscaler is not initialized.")
-        return self.engine.upscale(image)
+            raise RuntimeError("Upscaler not initialized.")
+
+        orig_w, orig_h = image.width, image.height
+        start = time.perf_counter()
+
+        out = self.engine.upscale(image)
+
+        elapsed = time.perf_counter() - start
+
+        meta = GenerationMetadata(
+            mode="upscale",
+            scale=float(self.scale),
+            original_width=orig_w,
+            original_height=orig_h,
+            width=out.width,
+            height=out.height,
+            elapsed_seconds=elapsed,
+        )
+
+        return out, meta

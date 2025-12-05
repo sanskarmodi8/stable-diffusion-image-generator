@@ -6,9 +6,9 @@ from typing import Any, Tuple
 
 import gradio as gr
 
-from src.sdgen.presets.styles import get_preset, list_presets
-from src.sdgen.ui.tabs.img2img_tab import Img2ImgControls
-from src.sdgen.ui.tabs.txt2img_tab import Txt2ImgControls
+from sdgen.presets.styles import get_preset, list_presets
+from sdgen.ui.tabs.img2img_tab import Img2ImgControls
+from sdgen.ui.tabs.txt2img_tab import Txt2ImgControls
 
 
 def apply_preset(preset_name: Any) -> Tuple[Any, ...]:

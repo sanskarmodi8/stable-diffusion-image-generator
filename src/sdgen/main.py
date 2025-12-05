@@ -9,11 +9,11 @@ from __future__ import annotations
 import torch
 from dotenv import load_dotenv
 
-from src.sdgen.config import AppSettings
-from src.sdgen.sd.img2img import prepare_img2img_pipeline
-from src.sdgen.sd.pipeline import load_pipeline, warmup_pipeline
-from src.sdgen.ui import build_ui
-from src.sdgen.utils.logger import get_logger
+from sdgen.config import AppSettings
+from sdgen.sd.img2img import prepare_img2img_pipeline
+from sdgen.sd.pipeline import load_pipeline, warmup_pipeline
+from sdgen.ui import build_ui
+from sdgen.utils.logger import get_logger
 
 logger = get_logger(__name__)
 load_dotenv()
@@ -57,7 +57,7 @@ def main() -> None:
         ),
     }
     if device == "cuda" and settings.warmup:
-        warmup_pipeline(pipes["SD1.5"])
+        warmup_pipeline(pipes["Turbo"])
 
     img2img_pipes = {
         "SD1.5": prepare_img2img_pipeline(pipes["SD1.5"]),
@@ -65,10 +65,7 @@ def main() -> None:
     }
 
     demo = build_ui(pipes, img2img_pipes)
-    demo.queue(
-        concurrency_count=1,
-        max_size=8,
-    ).launch(
+    demo.launch(
         server_name=settings.server_host,
         server_port=settings.server_port,
         share=settings.share,

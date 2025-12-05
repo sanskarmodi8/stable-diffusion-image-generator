@@ -37,7 +37,6 @@ def build_img2img_tab(handler: Callable[..., Tuple[Any, dict]]) -> Img2ImgContro
                 input_image = gr.Image(
                     label="Input Image",
                     type="numpy",
-                    tool="editor",
                 )
 
                 prompt = gr.Textbox(

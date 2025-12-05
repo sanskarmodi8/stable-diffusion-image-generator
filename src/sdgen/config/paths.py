@@ -1,4 +1,4 @@
-"""Path configuration for src.sdgen.
+"""Path configuration for sdgen.
 
 All filesystem paths are resolved relative to the project root.
 The project root is detected by walking upward until a marker

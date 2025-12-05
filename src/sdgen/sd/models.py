@@ -63,44 +63,43 @@ class Img2ImgConfig:
 
 @dataclass
 class GenerationMetadata:
-    """Output metadata for a generated image.
+    """Generic metadata for any generation mode.
 
-    Attributes:
-        mode: Generation mode ("txt2img", "img2img", "upscale", ...).
-        prompt: Prompt text.
-        negative_prompt: Negative prompt text.
-        steps: Number of diffusion steps.
-        guidance_scale: CFG scale.
-        width: Output width.
-        height: Output height.
-        seed: Resolved random seed.
-        strength: Img2Img strength; None for Txt2Img.
-        elapsed_seconds: Wall-clock runtime.
-        timestamp: UTC timestamp.
-        id: Unique entry ID.
-        thumbnail: Local thumbnail path.
-        full_image: Local full-size image path.
+    Fields are optional depending on mode:
+    - Txt2Img: prompt, negative, steps, guidance
+    - Img2Img: prompt, negative, strength, steps, guidance
+    - Upscale: scale, original size, final size
     """
 
-    mode: str
-    prompt: str
-    negative_prompt: str = ""
-    steps: int = 30
-    guidance_scale: float = 7.5
-    width: int = 512
-    height: int = 512
-    seed: Optional[int] = None
-    strength: Optional[float] = None
+    mode: str  # "txt2img", "img2img", "upscale"
+
+    # Shared
     elapsed_seconds: float = 0.0
     timestamp: str = field(default_factory=lambda: datetime.utcnow().isoformat())
     id: Optional[str] = None
     thumbnail: Optional[str] = None
     full_image: Optional[str] = None
 
+    # Txt2Img / Img2Img
+    prompt: Optional[str] = None
+    negative_prompt: Optional[str] = None
+    steps: Optional[int] = None
+    guidance_scale: Optional[float] = None
+    seed: Optional[int] = None
+
+    # Img2Img only
+    strength: Optional[float] = None
+
+    # Upscale only
+    scale: Optional[float] = None
+    original_width: Optional[int] = None
+    original_height: Optional[int] = None
+    width: Optional[int] = None
+    height: Optional[int] = None
+
     def to_dict(self) -> Dict[str, Any]:
-        """Return a dict representation excluding None values."""
-        data = asdict(self)
-        return {key: value for key, value in data.items() if value is not None}
+        """Drop None values for clean JSON."""
+        return {k: v for k, v in asdict(self).items() if v is not None}
 
 
 @dataclass

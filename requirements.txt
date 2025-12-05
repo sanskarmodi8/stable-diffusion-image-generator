@@ -8,15 +8,15 @@ torchaudio==2.5.1
 
 
 # HUGGINGFACE DIFFUSION ECOSYSTEM
-diffusers==0.29.2
-transformers==4.39.3    
-huggingface_hub==0.29.1 
+diffusers==0.35.2
+transformers==4.57.3    
+huggingface_hub==0.36.0
 accelerate==0.28.0
-safetensors==0.4.2
+safetensors==0.7.0
 
 
 # UI FRAMEWORK
-gradio==3.50.2
+gradio==6.0.2
 
 
 # IMAGE PROCESSING & UTILITIES
