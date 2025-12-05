@@ -8,6 +8,10 @@ from __future__ import annotations
 
 import sys
 import os
+
+# for HF spaces
+sys.path.append(os.path.abspath("src"))
+
 import torch
 from dotenv import load_dotenv
 
@@ -16,9 +20,6 @@ from sdgen.sd.img2img import prepare_img2img_pipeline
 from sdgen.sd.pipeline import load_pipeline, warmup_pipeline
 from sdgen.ui import build_ui
 from sdgen.utils.logger import get_logger
-
-# for HF spaces
-sys.path.append(os.path.abspath("src"))
 
 logger = get_logger(__name__)
 load_dotenv()
