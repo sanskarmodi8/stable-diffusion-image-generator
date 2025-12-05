@@ -5,7 +5,7 @@ sdk: gradio
 sdk_version: 6.0.2
 ---
 
-# Stable Diffusion Image Generator
+# Stable Diffusion Image Generator Toolkit
 
 ![appdemo](.github_assets/demo.png)
 
